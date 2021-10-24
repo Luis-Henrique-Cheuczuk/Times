@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>SignUp Page</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+
+    <form [formGroup]="_formCadastrar" (ngSubmit)="submitForm()" novalidate>
+
+      <ion-item>
+        <ion-label class="ion-title" position="floating">Email</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+      <span *ngIf="_isSubmitted && errorControl.email.errors?.required">
+        Email é obrigatório
+      </span>
+      <span *ngIf="_isSubmitted && errorControl.email.errors?.email">
+        Digite seu email corretamente
+      </span>
+
+      <ion-item>
+        <ion-label class="ion-title" position="floating">Senha</ion-label>
+        <ion-input type="password" formControlName="senha"></ion-input>
+      </ion-item>
+      <span *ngIf="_isSubmitted && errorControl.senha.errors?.required">
+        Senha é obrigatória!
+      </span>
+      <span *ngIf="_isSubmitted && errorControl.senha.errors?.minlength">
+        Mínimo 6 caracteres!
+      </span>
+
+      <ion-item>
+        <ion-label class="ion-title" position="floating">Confirmar Senha</ion-label>
+        <ion-input type="password" formControlName="confSenha"></ion-input>
+      </ion-item>
+      <span *ngIf="_isSubmitted && errorControl.confSenha.errors?.required">
+        Confirmação de Senha é obrigatória!
+      </span>
+      <span *ngIf="_isSubmitted && errorControl.confSenha.errors?.minlength">
+        Mínimo 6 caracteres!
+      </span>
+      <span *ngIf="_isSubmitted && this._formCadastrar.value['senha'] != this._formCadastrar.value['confSenha']">
+        Senhas não são iguais!
+      </span>
+
+        <ion-button color="success" expand="full" type="submit">Cadastrar
+          <ion-icon name="create-outline"></ion-icon>
+        </ion-button>
+
+        <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+          <ion-fab-button color="dark" (click)="homepage()">
+            <ion-icon name="home-outline"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
+
+    </form>
+  </ion-list>
+</ion-content>

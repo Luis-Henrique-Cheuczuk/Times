@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-title class="ion-title">Cadastrar Informações</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+
+    <form [formGroup]="_formCadastrar" (ngSubmit)="submitForm()" novalidate>
+
+      <span *ngIf="_isSubmitted && errorControl.nome.errors?.required">
+        Nome é obrigatório
+      </span>
+      <span *ngIf="_isSubmitted && errorControl.nome.errors?.minlenght">
+        Preencha seu nome completo
+      </span>
+      <ion-item>
+        <ion-label class="ion-title" position="floating">Nome</ion-label>
+        <ion-input type="text" formControlName="nome"></ion-input>
+      </ion-item>
+
+      <span *ngIf="_isSubmitted && errorControl.telefone.errors?.required">
+        Telefone é obrigatório!
+      </span>
+      <span *ngIf="_isSubmitted && errorControl.telefone.errors?.maxlenght">
+        Digite seu telefone com DDD!
+      </span>
+      <ion-item>
+        <ion-label class="ion-title" position="floating">Telefone</ion-label>
+        <ion-input type="number" formControlName="telefone"></ion-input>
+      </ion-item>
+
+      <span *ngIf="_isSubmitted && errorControl.time_coracao.errors?.required">
+        Time do Coração é obrigatório!
+      </span>
+      <ion-item>
+        <ion-label class="ion-title" position="floating">Time do coração</ion-label>
+        <ion-input type="text" formControlName="time_coracao"></ion-input>
+      </ion-item>
+
+      <span *ngIf="_isSubmitted && errorControl.time_odiado.errors?.required">
+        Você deve odiar um time xD!
+      </span>
+      <ion-item>
+        <ion-label class="ion-title" position="floating">Time que odeia</ion-label>
+        <ion-input type="text" formControlName="time_odiado"></ion-input>
+      </ion-item>
+
+      <span *ngIf="_isSubmitted && errorControl.selecao.errors?.required">
+        Seleção é obrigatória!
+      </span>
+      <ion-item>
+        <ion-label class="ion-title" position="floating">Seleção que torce</ion-label>
+        <ion-input type="text" formControlName="selecao"></ion-input>
+      </ion-item>
+
+      <span *ngIf="_isSubmitted && errorControl.idolo.errors?.required">
+        Nome do idolo é obrigatório!
+      </span>
+      <ion-item>
+        <ion-label class="ion-title" position="floating">Nome do seu Idolo</ion-label>
+        <ion-input type="text" formControlName="idolo"></ion-input>
+      </ion-item>
+
+      <span *ngIf="_isSubmitted && errorControl.posicao.errors?.required">
+        Posição é obrigatória!
+      </span>
+      <ion-item>
+        <ion-label class="ion-title" position="floating">Qual sua posição dentro de campo?</ion-label>
+        <ion-select formControlName="posicao">
+          <ion-select-option value="meia">Meia</ion-select-option>
+          <ion-select-option value="volante">Volante</ion-select-option>
+          <ion-select-option value="goleiro">Goleiro</ion-select-option>
+          <ion-select-option value="zagueiro">Zagueiro</ion-select-option>
+          <ion-select-option value="atacante">Atacante</ion-select-option>
+          <ion-select-option value="ponta_direita">Ponta Direita</ion-select-option>
+          <ion-select-option value="ponta_esquerda">Ponta Esquerda </ion-select-option>
+
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-button color="success" expand="full" type="submit">Cadastrar para a pelada</ion-button>
+      </ion-item>
+
+      <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button color="dark" (click)="homepage()">
+          <ion-icon name="home-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+
+    </form>
+  </ion-list>
+</ion-content>

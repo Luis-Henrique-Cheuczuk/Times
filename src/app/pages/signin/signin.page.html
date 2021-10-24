@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>SignIn Page</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-title">Cadastrar Informações</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+
+    <form [formGroup]="_formLogar" (ngSubmit)="submitForm()" novalidate>
+
+      <ion-item>
+        <ion-label class="ion-title" position="floating">Email</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+      <span *ngIf="_isSubmitted && errorControl.email.errors?.required">
+        Email é obrigatório
+      </span>
+      <span *ngIf="_isSubmitted && errorControl.email.errors?.email">
+        Digite seu email corretamente
+      </span>
+
+      <ion-item>
+        <ion-label class="ion-title" position="floating">Senha</ion-label>
+        <ion-input type="password" formControlName="senha"></ion-input>
+      </ion-item>
+      <span *ngIf="_isSubmitted && errorControl.senha.errors?.required">
+        Senha é obrigatória!
+      </span>
+      <span *ngIf="_isSubmitted && errorControl.senha.errors?.minlength">
+        Mínimo 6 caracteres!
+      </span>
+
+        <ion-button color="success" expand="full" type="submit">Entrar
+          <ion-icon name="log-in-outline"></ion-icon>
+        </ion-button>
+
+        <ion-button color="danger" expand="full" (click)="_signInGoogle()">Entrar com google
+          <ion-icon slot="end" name="logo-google"></ion-icon>
+        </ion-button>
+
+    </form>
+  </ion-list>
+  <a (click)="_irParaSignUp()">Não tem cadastro? Clique aqui!</a>
+</ion-content>
